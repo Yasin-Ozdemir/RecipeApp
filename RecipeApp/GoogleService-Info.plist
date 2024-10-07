@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAsHFdig_qcopBDxL-CjoOemy2_XC0GysE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>384397875845</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Yasin-Ozdemir.RecipeApp</string>
+	<key>PROJECT_ID</key>
+	<string>recipeapp-5300c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>recipeapp-5300c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:384397875845:ios:8514d3463c6a0cb280e7ec</string>
+</dict>
+</plist>
