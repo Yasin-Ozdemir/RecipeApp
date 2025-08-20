@@ -7,41 +7,56 @@
 
 import UIKit
 import SnapKit
-protocol SignInPresenterToViewProtocol : AnyObject {
-    func showAlert(title: String, message: String) 
+protocol SignInPresenterToViewProtocol: AnyObject {
+    func showAlert(title: String, message: String)
 }
-class SignInViewController: UIViewController {
-    private let imageView : UIImageView = {
+final class SignInViewController: UIViewController {
+
+    private let imageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(resource: .recipeAppLogo))
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    private let createUserButton : UIButton = {
+
+    private let createUserButton: UIButton = {
         let button = UIButton()
         button.setTitle("Create User", for: .normal)
         button.setTitleColor(.label, for: .normal)
         return button
     }()
+
     private var mailTextField = SignTextField(placeHolder: "Please Enter Your Mail", hideText: false)
     private var passwordTextField = SignTextField(placeHolder: "Please Enter Your Password", hideText: true)
     private var signInButton = CustomButton(backgroundColor: ColorConstants.mainColor, title: "Sign In", titleColor: .label)
     private var welcomeLabel = TitleLabel(align: .center, size: 25)
-    var presenter : SignInViewToPresenterProtocol!
+
+    var presenter: SignInViewToPresenterProtocol!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-       configureVC()
+        configureVC()
+
     }
-    private func configureVC(){
+
+    @objc func hideKeyboard() {
+        view.endEditing(true) // Klavyeyi gizler
+    }
+
+    private func configureVC() {
         self.view.backgroundColor = .systemBackground
-        self.view.addSubviews(imageView , createUserButton , mailTextField,passwordTextField,signInButton , welcomeLabel)
+        self.view.addSubviews(imageView, createUserButton, mailTextField, passwordTextField, signInButton, welcomeLabel)
         setupNavigationController()
-        
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
+
         self.welcomeLabel.text = "WELCOME TO RECIPE APP"
         self.signInButton.addTarget(self, action: #selector(signInButtonClicked), for: .touchUpInside)
         self.createUserButton.addTarget(self, action: #selector(createUserButtonClicked), for: .touchUpInside)
         applyConstraints()
     }
-    private func applyConstraints(){
+
+    private func applyConstraints() {
         self.imageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(120)
@@ -78,27 +93,32 @@ class SignInViewController: UIViewController {
             make.width.equalToSuperview().multipliedBy(0.65)
             make.height.equalTo(40)
         }
-        
+
     }
-    private func setupNavigationController(){
+
+    private func setupNavigationController() {
         self.navigationController?.navigationBar.tintColor = ColorConstants.mainColor
     }
-    @objc func createUserButtonClicked(){
+
+    @objc func createUserButtonClicked() {
         print("createButtonClicked")
         presenter.goSignOnVC()
     }
-   @objc func signInButtonClicked(){
-       guard let mail = self.mailTextField.text , let password = self.passwordTextField.text else {
-           return
-       }
-       if mail != "" && password != "" {
-           presenter.signIn(mail: mail, password: password)
-       }
-       
+
+    @objc func signInButtonClicked() {
+        guard let mail = self.mailTextField.text, let password = self.passwordTextField.text else {
+            return
+        }
+        if mail != "" && password != "" {
+            presenter.signIn(mail: mail, password: password)
+        }
+
     }
 }
-extension SignInViewController : SignInPresenterToViewProtocol {
-     func showAlert(title: String, message: String) {
-         self.showCustomAlert(title: title, message: message)
+
+
+extension SignInViewController: SignInPresenterToViewProtocol {
+    func showAlert(title: String, message: String) {
+        self.showCustomAlert(title: title, message: message)
     }
 }

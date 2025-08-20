@@ -12,6 +12,16 @@
 		EB1E45382CAAC3FD0082F930 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1E45372CAAC3FD0082F930 /* DetailTableViewCell.swift */; };
 		EB1E453A2CAADC270082F930 /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1E45392CAADC270082F930 /* IngredientsViewController.swift */; };
 		EB1E453C2CAAEFC20082F930 /* SizeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1E453B2CAAEFC20082F930 /* SizeConstants.swift */; };
+		EB58E0A82CBBBA5100393E5F /* CategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58E0A52CBBBA5100393E5F /* CategoryRouter.swift */; };
+		EB58E0A92CBBBA5100393E5F /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58E0A42CBBBA5100393E5F /* CategoryPresenter.swift */; };
+		EB58E0AB2CBBBA5100393E5F /* CategoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58E0A32CBBBA5100393E5F /* CategoryInteractor.swift */; };
+		EB58E0AC2CBBBA5100393E5F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58E0A72CBBBA5100393E5F /* CategoryViewController.swift */; };
+		EB58E0AD2CBBBA5100393E5F /* CategoryContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58E0A22CBBBA5100393E5F /* CategoryContract.swift */; };
+		EB58E0B42CBBBA5F00393E5F /* AreaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58E0B02CBBBA5F00393E5F /* AreaPresenter.swift */; };
+		EB58E0B52CBBBA5F00393E5F /* AreaContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58E0AE2CBBBA5F00393E5F /* AreaContract.swift */; };
+		EB58E0B62CBBBA5F00393E5F /* AreaInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58E0AF2CBBBA5F00393E5F /* AreaInteractor.swift */; };
+		EB58E0B72CBBBA5F00393E5F /* AreaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58E0B12CBBBA5F00393E5F /* AreaRouter.swift */; };
+		EB58E0B92CBBBA5F00393E5F /* AreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58E0B32CBBBA5F00393E5F /* AreaViewController.swift */; };
 		EB6341CA2CAF17D500AAE5BC /* SignTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6341C92CAF17D500AAE5BC /* SignTextField.swift */; };
 		EB6341CC2CAF1C7300AAE5BC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6341CB2CAF1C7300AAE5BC /* AuthManager.swift */; };
 		EB6DDF3F2CAD220A00EE7EFA /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6DDF3E2CAD220A00EE7EFA /* InstructionViewController.swift */; };
@@ -28,9 +38,6 @@
 		EB979B3B2C959D7A003AC1FF /* PopularRecipesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB979B3A2C959D7A003AC1FF /* PopularRecipesPresenter.swift */; };
 		EB979B3D2C959D86003AC1FF /* PopularRecipesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB979B3C2C959D86003AC1FF /* PopularRecipesInteractor.swift */; };
 		EB979B3F2C959D92003AC1FF /* PopularRecipesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB979B3E2C959D92003AC1FF /* PopularRecipesRouter.swift */; };
-		EB979B412C959D9B003AC1FF /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB979B402C959D9B003AC1FF /* ListPresenter.swift */; };
-		EB979B432C959DA2003AC1FF /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB979B422C959DA2003AC1FF /* ListInteractor.swift */; };
-		EB979B452C959DAB003AC1FF /* ListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB979B442C959DAB003AC1FF /* ListRouter.swift */; };
 		EB979B482C96F603003AC1FF /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB979B472C96F603003AC1FF /* NetworkConstants.swift */; };
 		EB979B4B2C97174A003AC1FF /* SeachResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB979B4A2C971749003AC1FF /* SeachResultViewController.swift */; };
 		EB979B4D2C9752BB003AC1FF /* SearchResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB979B4C2C9752BB003AC1FF /* SearchResultPresenter.swift */; };
@@ -100,6 +107,16 @@
 		EB1E45372CAAC3FD0082F930 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		EB1E45392CAADC270082F930 /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
 		EB1E453B2CAAEFC20082F930 /* SizeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeConstants.swift; sourceTree = "<group>"; };
+		EB58E0A22CBBBA5100393E5F /* CategoryContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryContract.swift; sourceTree = "<group>"; };
+		EB58E0A32CBBBA5100393E5F /* CategoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInteractor.swift; sourceTree = "<group>"; };
+		EB58E0A42CBBBA5100393E5F /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
+		EB58E0A52CBBBA5100393E5F /* CategoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRouter.swift; sourceTree = "<group>"; };
+		EB58E0A72CBBBA5100393E5F /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		EB58E0AE2CBBBA5F00393E5F /* AreaContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaContract.swift; sourceTree = "<group>"; };
+		EB58E0AF2CBBBA5F00393E5F /* AreaInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaInteractor.swift; sourceTree = "<group>"; };
+		EB58E0B02CBBBA5F00393E5F /* AreaPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaPresenter.swift; sourceTree = "<group>"; };
+		EB58E0B12CBBBA5F00393E5F /* AreaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaRouter.swift; sourceTree = "<group>"; };
+		EB58E0B32CBBBA5F00393E5F /* AreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaViewController.swift; sourceTree = "<group>"; };
 		EB6341C92CAF17D500AAE5BC /* SignTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignTextField.swift; sourceTree = "<group>"; };
 		EB6341CB2CAF1C7300AAE5BC /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		EB6DDF3E2CAD220A00EE7EFA /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
@@ -116,9 +133,6 @@
 		EB979B3A2C959D7A003AC1FF /* PopularRecipesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRecipesPresenter.swift; sourceTree = "<group>"; };
 		EB979B3C2C959D86003AC1FF /* PopularRecipesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRecipesInteractor.swift; sourceTree = "<group>"; };
 		EB979B3E2C959D92003AC1FF /* PopularRecipesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRecipesRouter.swift; sourceTree = "<group>"; };
-		EB979B402C959D9B003AC1FF /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
-		EB979B422C959DA2003AC1FF /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
-		EB979B442C959DAB003AC1FF /* ListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRouter.swift; sourceTree = "<group>"; };
 		EB979B472C96F603003AC1FF /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		EB979B4A2C971749003AC1FF /* SeachResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachResultViewController.swift; sourceTree = "<group>"; };
 		EB979B4C2C9752BB003AC1FF /* SearchResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultPresenter.swift; sourceTree = "<group>"; };
@@ -195,6 +209,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB58E0A02CBBBA2C00393E5F /* AreaListVC */ = {
+			isa = PBXGroup;
+			children = (
+				EB58E0AE2CBBBA5F00393E5F /* AreaContract.swift */,
+				EB58E0AF2CBBBA5F00393E5F /* AreaInteractor.swift */,
+				EB58E0B02CBBBA5F00393E5F /* AreaPresenter.swift */,
+				EB58E0B12CBBBA5F00393E5F /* AreaRouter.swift */,
+				EB58E0B32CBBBA5F00393E5F /* AreaViewController.swift */,
+			);
+			path = AreaListVC;
+			sourceTree = "<group>";
+		};
+		EB58E0A12CBBBA3500393E5F /* CategoryListVC */ = {
+			isa = PBXGroup;
+			children = (
+				EB58E0A22CBBBA5100393E5F /* CategoryContract.swift */,
+				EB58E0A32CBBBA5100393E5F /* CategoryInteractor.swift */,
+				EB58E0A42CBBBA5100393E5F /* CategoryPresenter.swift */,
+				EB58E0A52CBBBA5100393E5F /* CategoryRouter.swift */,
+				EB58E0A72CBBBA5100393E5F /* CategoryViewController.swift */,
+			);
+			path = CategoryListVC;
+			sourceTree = "<group>";
+		};
 		EB8201B22C941EA60085542B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,9 +272,8 @@
 			isa = PBXGroup;
 			children = (
 				EB8201AA2C9402440085542B /* ListVC.swift */,
-				EB979B402C959D9B003AC1FF /* ListPresenter.swift */,
-				EB979B422C959DA2003AC1FF /* ListInteractor.swift */,
-				EB979B442C959DAB003AC1FF /* ListRouter.swift */,
+				EB58E0A12CBBBA3500393E5F /* CategoryListVC */,
+				EB58E0A02CBBBA2C00393E5F /* AreaListVC */,
 			);
 			path = ListVC;
 			sourceTree = "<group>";
@@ -596,6 +633,11 @@
 				EBAAFF6E2C9CB04C00E01C09 /* SignOnViewController.swift in Sources */,
 				EBC380D42C9435800013515E /* NetworkManager.swift in Sources */,
 				EB1E45362CA993780082F930 /* UINavigationController+Ext.swift in Sources */,
+				EB58E0A82CBBBA5100393E5F /* CategoryRouter.swift in Sources */,
+				EB58E0A92CBBBA5100393E5F /* CategoryPresenter.swift in Sources */,
+				EB58E0AB2CBBBA5100393E5F /* CategoryInteractor.swift in Sources */,
+				EB58E0AC2CBBBA5100393E5F /* CategoryViewController.swift in Sources */,
+				EB58E0AD2CBBBA5100393E5F /* CategoryContract.swift in Sources */,
 				EBD6D7052C9C2EA000621616 /* ImageConstants.swift in Sources */,
 				EB8201AB2C9402440085542B /* ListVC.swift in Sources */,
 				EBAAFF7C2C9CB20300E01C09 /* SignInRouter.swift in Sources */,
@@ -610,7 +652,6 @@
 				EBD6D6FD2C99BA1800621616 /* SearchResultRouter.swift in Sources */,
 				EBE10C252C93408F00BA46E5 /* PopularRecipesCollectionViewCell.swift in Sources */,
 				EBAAFF722C9CB07B00E01C09 /* SignOnInteractor.swift in Sources */,
-				EB979B452C959DAB003AC1FF /* ListRouter.swift in Sources */,
 				EBE10BDA2C92F4C500BA46E5 /* AppDelegate.swift in Sources */,
 				EB19A5CF2CB025E90089E568 /* User.swift in Sources */,
 				EBDA79402CAD873C006397C7 /* DetailInteractor.swift in Sources */,
@@ -636,7 +677,6 @@
 				EB979B3B2C959D7A003AC1FF /* PopularRecipesPresenter.swift in Sources */,
 				EBAAFF742C9CB08400E01C09 /* SignOnRouter.swift in Sources */,
 				EBE10C052C93076D00BA46E5 /* ProfileViewController.swift in Sources */,
-				EB979B412C959D9B003AC1FF /* ListPresenter.swift in Sources */,
 				EBE10C032C93047A00BA46E5 /* FavoriteInteractor.swift in Sources */,
 				EBE10C162C9316F400BA46E5 /* FoodImageView.swift in Sources */,
 				EB8201B42C941EBE0085542B /* Category.swift in Sources */,
@@ -663,9 +703,13 @@
 				EB979B4D2C9752BB003AC1FF /* SearchResultPresenter.swift in Sources */,
 				EB6DDF3F2CAD220A00EE7EFA /* InstructionViewController.swift in Sources */,
 				EBDA793E2CAD8734006397C7 /* DetailPresenter.swift in Sources */,
+				EB58E0B42CBBBA5F00393E5F /* AreaPresenter.swift in Sources */,
+				EB58E0B52CBBBA5F00393E5F /* AreaContract.swift in Sources */,
+				EB58E0B62CBBBA5F00393E5F /* AreaInteractor.swift in Sources */,
+				EB58E0B72CBBBA5F00393E5F /* AreaRouter.swift in Sources */,
+				EB58E0B92CBBBA5F00393E5F /* AreaViewController.swift in Sources */,
 				EB979B4B2C97174A003AC1FF /* SeachResultViewController.swift in Sources */,
 				EBE10C122C9316B600BA46E5 /* TitleLabel.swift in Sources */,
-				EB979B432C959DA2003AC1FF /* ListInteractor.swift in Sources */,
 				EB979B3D2C959D86003AC1FF /* PopularRecipesInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

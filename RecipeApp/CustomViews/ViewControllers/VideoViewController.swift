@@ -8,22 +8,22 @@
 import UIKit
 import SnapKit
 import WebKit
-class VideoViewController: UIViewController {
-    
-    private let webView : WKWebView = {
-       let webView = WKWebView()
+final class VideoViewController: UIViewController {
+
+    private let webView: WKWebView = {
+        let webView = WKWebView()
         return webView
     }()
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-  convenience  init(videoUrl : String?) {
-      self.init(nibName: nil, bundle: nil)
-      set(videoUrl: videoUrl)
+    convenience init(videoUrl: String?) {
+        self.init(nibName: nil, bundle: nil)
+        set(videoUrl: videoUrl)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +33,8 @@ class VideoViewController: UIViewController {
         applyConstraints()
         // Do any additional setup after loading the view.
     }
-    
-    func applyConstraints(){
+
+   private func applyConstraints() {
         let padding = 25
         webView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -43,15 +43,16 @@ class VideoViewController: UIViewController {
             make.height.equalTo(200)
         }
     }
-    
-    func set(videoUrl : String?) {
-        guard let urlString = videoUrl  , let url = URL(string:getVideoUrl(urlString: urlString)) else{
+
+    private func set(videoUrl: String?) {
+        guard let urlString = videoUrl, let url = URL(string: getVideoUrl(urlString: urlString)) else {
             return
         }
         self.webView.load(URLRequest(url: url))
     }
-    private func getVideoUrl(urlString : String) -> String{
-        let targetChar : Character = "="
+    
+    private func getVideoUrl(urlString: String) -> String {
+        let targetChar: Character = "="
         if let range = urlString.range(of: String(targetChar)) {
             // Karakterden sonrasını alma
             let substring = urlString[range.upperBound...]

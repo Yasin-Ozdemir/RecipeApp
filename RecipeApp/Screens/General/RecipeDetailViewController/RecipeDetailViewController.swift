@@ -7,12 +7,13 @@
 
 import UIKit
 import SnapKit
+
 protocol RecipeDetailPresenterToViewProtocol : AnyObject{
     func showAlert(title : String ,message: String)
     func updateFavoriteButton()
 }
-class RecipeDetailViewController: UIViewController {
-    var presenter : RecipeDetailViewToPresenterProtocol!
+final class RecipeDetailViewController: UIViewController {
+    private var presenter : RecipeDetailViewToPresenterProtocol!
     private var isFavorite = false
     
     private var headerContainerView = UIView()
@@ -29,7 +30,7 @@ class RecipeDetailViewController: UIViewController {
         return indicator
     }()
     
-    var scrollView : UIScrollView = {
+   private var scrollView : UIScrollView = {
        let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
@@ -39,6 +40,15 @@ class RecipeDetailViewController: UIViewController {
     private let instructionTitleLabel = TitleLabel(align: .left, size: 28)
     private let webTitleLabel = TitleLabel(align: .left, size: 28)
     
+    init(presenter: RecipeDetailViewToPresenterProtocol!) {
+        super.init(nibName: nil, bundle: nil)
+        self.presenter = presenter
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
@@ -46,6 +56,7 @@ class RecipeDetailViewController: UIViewController {
         setupUI()
         setupNavigationController()
     }
+    
    private func setupUI(){
        self.view.backgroundColor = .systemBackground
        self.contentView.backgroundColor = .systemBackground
@@ -67,7 +78,8 @@ class RecipeDetailViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
         }
-        let contentHeight = ((Double(presenter.getInstructionLenght()) / 40 * 16.2 + 30) * 1.1 + Double(SizeConstants.ingredientHeiht) * 1.1 ) + Double(630)
+        let contentHeight = SizeConstants.getRecipeDetailVcContentHeight(textLenght: presenter.getInstructionLenght())
+                             
         self.contentView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.width.equalToSuperview()
@@ -99,7 +111,7 @@ class RecipeDetailViewController: UIViewController {
             make.top.equalTo(ingredientsContainerView.snp.bottom).offset(25)
             make.height.equalTo(30)
         }
-        let instructionContainerHeight = Double(presenter.getInstructionLenght()) / 40 * 16.2  +  30
+        let instructionContainerHeight = SizeConstants.getInsturcionHeight(textLenght: presenter.getInstructionLenght())
         instructionContainerView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(padding)
             make.trailing.equalToSuperview().inset(padding)
@@ -131,7 +143,7 @@ class RecipeDetailViewController: UIViewController {
         
     }
     
-    func setupFavoriteButton(){
+   private func setupFavoriteButton(){
         var favoriteButton = UIBarButtonItem()
         if presenter.isFavoriteControl() {
             favoriteButton = UIBarButtonItem(image: UIImage(systemName: SFSymbols.fovoriteFilled.rawValue), style: .done, target: self , action: #selector(removeFavorite))
@@ -157,7 +169,8 @@ class RecipeDetailViewController: UIViewController {
        add(childVC: InstructionViewController(meal: presenter.recipe, instructionLenght: presenter.getInstructionLenght()), to: instructionContainerView)
        add(childVC: VideoViewController(videoUrl: presenter.recipe["strYoutube"]!), to: webContainerView)
     }
-    func add(childVC : UIViewController , to containerView: UIView){
+    
+  private   func add(childVC : UIViewController , to containerView: UIView){
         addChild(childVC)
         containerView.addSubview(childVC.view)
         childVC.view.frame = containerView.bounds // vc to fill up whole view controller
@@ -172,7 +185,10 @@ extension RecipeDetailViewController : RecipeDetailPresenterToViewProtocol {
     }
     
     func updateFavoriteButton(){
-        setupFavoriteButton()
+        DispatchQueue.main.async {
+            self.setupFavoriteButton()
+        }
+        
     }
 }
 

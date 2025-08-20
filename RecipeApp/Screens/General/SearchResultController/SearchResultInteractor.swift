@@ -9,7 +9,7 @@ import Foundation
 protocol SearchPresenterToInteractorProtocol {
     func search(with name : String) async -> (Result<Recipe,Error>)
 }
-class SearchResultInteractor  :SearchPresenterToInteractorProtocol{
+final class SearchResultInteractor  :SearchPresenterToInteractorProtocol{
     private let networkManager = NetworkManager()
     func search(with name: String) async -> (Result<Recipe,Error>){
       let result = await networkManager.download(url: NetworkConstants.searchUrl.rawValue + name, model: Recipe.self, httpMethod: .get)

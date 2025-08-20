@@ -13,7 +13,7 @@ protocol SearchPresenterToViewControllerProtocol : AnyObject {
     func updateCollectionView()
     func showError(message : String)
 }
-class SearchResultViewController: UIViewController {
+final class SearchResultViewController: UIViewController {
     private var dataSource  : UICollectionViewDiffableDataSource<Section , [String: String?]>!
     private var collectionView : UICollectionView!
     var presenter : SearchViewControllerToPresenterProtocol!
@@ -23,12 +23,13 @@ class SearchResultViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         configureDataSource()
+        
     }
-    func search(with recipeName : String){
+    
+     func search(with recipeName : String){
         presenter.search(with: recipeName)
-     
     }
-   
+    
    private func setupCollectionView(){
         
        self.collectionView = .init(frame: view.bounds, collectionViewLayout: CollectionViewFlowLayouts.createTwoColumnLayout(with: view.bounds.width, scrollDirection: .vertical))
@@ -43,9 +44,10 @@ class SearchResultViewController: UIViewController {
 }
 
 extension SearchResultViewController : UICollectionViewDelegate {
-    private func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.presenter.numberOfItemsInSection()
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("clicked")
         DispatchQueue.main.async {
@@ -53,10 +55,12 @@ extension SearchResultViewController : UICollectionViewDelegate {
         }
         
     }
-    private func configureDataSource(){
+    
+    func configureDataSource(){
         dataSource = UICollectionViewDiffableDataSource<Section,[String : String?]>(collectionView: collectionView) { collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.cellID, for: indexPath) as! ListCollectionViewCell
-            cell.setForSearchResult(recipe: item)
+        
+            cell.set(title: item["strMeal"]!, imagePath: item["strMealThumb"]!)
             return cell
         }
     }

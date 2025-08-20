@@ -11,7 +11,8 @@ protocol ProfilePresenterToRouterProtocol : AnyObject{
     var viewControllerDelegate : UIViewController? {get set}
     func navigateLogInVC()
 }
-class ProfileRouter : ProfilePresenterToRouterProtocol{
+
+final class ProfileRouter : ProfilePresenterToRouterProtocol{
     weak var viewControllerDelegate : UIViewController?
     
     static func generateModule() -> UIViewController {

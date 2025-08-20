@@ -13,7 +13,7 @@ protocol SignInPresenterToRouterProtocol {
     func navigateHomeVC()
     func navigateSignOnVC()
 }
-class SignInRouter : SignInPresenterToRouterProtocol {
+final class SignInRouter : SignInPresenterToRouterProtocol {
     weak var viewDelegate: UIViewController?
     
     static func generateModule() -> UIViewController{

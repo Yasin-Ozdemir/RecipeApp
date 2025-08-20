@@ -10,7 +10,8 @@ import SnapKit
 protocol ProfilePresenterToViewControllerProtocol : AnyObject{
     func showAlert(title : String , message : String)
 }
-class ProfileViewController: UIViewController {
+
+final class ProfileViewController: UIViewController {
     var presenter : ProfileViewControllerToPresenterProtocol!
     
     private let titleLabel = TitleLabel(align: .center, size: 27)
@@ -21,6 +22,7 @@ class ProfileViewController: UIViewController {
         tableView.backgroundColor = .systemBackground
         return tableView
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground

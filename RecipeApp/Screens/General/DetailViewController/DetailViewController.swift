@@ -8,8 +8,9 @@
 import UIKit
 protocol DetailPresenterToViewProtocol : AnyObject{
     func showError(message : String)
+    func reloadTableView()
 }
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
   
     var presenter : DetailViewToPresenterProtocol!
     private var tableView : UITableView!
@@ -21,13 +22,14 @@ class DetailViewController: UIViewController {
        
     }
   
-    func setupNavigationController(title : String){
+   private func setupNavigationController(title : String){
         self.navigationItem.title = title
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.tintColor = ColorConstants.mainColor
         self.navigationItem.hidesBackButton = false
     }
-    func configureTableView(){
+    
+    private func configureTableView(){
         self.tableView = .init(frame: .zero)
         self.tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.cellId)
         self.tableView.showsVerticalScrollIndicator = false
@@ -36,6 +38,7 @@ class DetailViewController: UIViewController {
         self.view.addSubview(self.tableView)
         applyConstraints()
     }
+    
     private func applyConstraints(){
         self.tableView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(12)
@@ -71,6 +74,10 @@ extension DetailViewController : UITableViewDelegate , UITableViewDataSource {
 }
 
 extension DetailViewController : DetailPresenterToViewProtocol {
+    func reloadTableView() {
+        self.tableView.reloadData()
+    }
+    
     func showError(message : String) {
         self.showCustomAlert(title: "ERROR", message: "Something Get Wrong!")
     }

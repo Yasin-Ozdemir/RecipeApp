@@ -13,7 +13,7 @@ protocol HomeViewToPresenterProtocol : AnyObject{
     
     func goDetailVC(with recipe : Recipe , title : String)
 }
-class HomePresenter : HomeViewToPresenterProtocol{
+final class HomePresenter : HomeViewToPresenterProtocol{
     weak var viewControllerDelegate : HomePresenterToViewControllerProtocol?
     var router : HomePresenterToRouterProtocol!
     

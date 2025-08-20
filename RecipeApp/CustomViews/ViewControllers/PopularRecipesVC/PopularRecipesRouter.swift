@@ -12,14 +12,14 @@ protocol PopularRecipesPresenterToRouterProtocol{
     
     func navigateRecipeDetailVC(recipe : [String : String?])
 }
-class PopularRecipesRouter : PopularRecipesPresenterToRouterProtocol{
+final class PopularRecipesRouter : PopularRecipesPresenterToRouterProtocol{
     weak var viewDelegate: UIViewController?
     
     static func generateModule() -> UIViewController {
         let view = PopularRecipesVC()
        
         let presenter : PopularRecipesViewControllerToPresenterProtocol = PopularRecipesPresenter()
-        let interactor : PopularRecipesPresenterToInteractorProtocol = PopularRecipesInteractor()
+        let interactor : PopularRecipesPresenterToInteractorProtocol = PopularRecipesInteractor(networkManager: NetworkManager())
         let router : PopularRecipesPresenterToRouterProtocol = PopularRecipesRouter()
         
         view.presenter = presenter
@@ -33,13 +33,13 @@ class PopularRecipesRouter : PopularRecipesPresenterToRouterProtocol{
     }
     
     func navigateRecipeDetailVC(recipe : [String : String?]){
-        guard let detailVC = RecipeDetailRouter.generateModule() as? RecipeDetailViewController else {
+        guard let detailVC = RecipeDetailRouter.generateModule(with: recipe) as? RecipeDetailViewController else {
             return
         }
         
-        detailVC.presenter.recipe = recipe
         let nav = UINavigationController(rootViewController: detailVC)
         nav.modalPresentationStyle = .fullScreen
         viewDelegate?.present(nav, animated: true)
     }
 }
+

@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-class RecipeTableViewCell: UITableViewCell {
+final class RecipeTableViewCell: UITableViewCell {
     static let cellId = "recipeTableCell"
     private var mealImageView = FoodImageView(frame: .zero)
     private var titleLabel = TitleLabel(align: .left, size: 15)
@@ -53,11 +53,11 @@ class RecipeTableViewCell: UITableViewCell {
     }
     public func set(recipe : [String : String?]?){
         guard let recipe = recipe , let url = recipe["strMealThumb"] as? String , let title = recipe["strMeal"] as? String else {
-            mealImageView.downloadImage(url: "")
+            mealImageView.downloadImage(imagePath: "")
             titleLabel.text = "Unkown"
             return
         }
-        mealImageView.downloadImage(url: url)
+        mealImageView.downloadImage(imagePath: url)
         titleLabel.text = title
         
     }

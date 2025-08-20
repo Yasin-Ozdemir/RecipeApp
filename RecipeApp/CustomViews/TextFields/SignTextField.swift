@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignTextField: UITextField {
+final class SignTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()

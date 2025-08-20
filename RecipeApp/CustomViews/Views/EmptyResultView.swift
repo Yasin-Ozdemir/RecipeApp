@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 import SnapKit
-class EmptyResultView : UIView {
+final class EmptyResultView : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .secondarySystemBackground
-        label.text = "WE ARE SORRY :( \nRECIPE NOT FOUND!"
+        label.text = "WE ARE SORRY :( \nRECIPE DID NOT FOUND!"
         configureView()
     }
     

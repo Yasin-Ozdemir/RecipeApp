@@ -13,7 +13,7 @@ protocol SignOnViewToPresenterProtocol {
     
     func registerUser(mail : String , password : String, name: String)
 }
-class SignOnPresenter : SignOnViewToPresenterProtocol {
+final class SignOnPresenter : SignOnViewToPresenterProtocol {
     weak var viewDelegate: SignOnPresenterToViewProtocol?
     var interactor:  SignOnPresenterToInteractorProtocol!
     var router: SignOnPresenterToRouterProtocol!

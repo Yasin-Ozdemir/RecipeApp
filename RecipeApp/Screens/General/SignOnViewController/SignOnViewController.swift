@@ -10,7 +10,8 @@ import UIKit
 protocol SignOnPresenterToViewProtocol : AnyObject{
     func showAlert(title: String, message: String)
 }
-class SignOnViewController: UIViewController {
+
+final class SignOnViewController: UIViewController {
     private let imageView : UIImageView = {
         let imageView = UIImageView(image: UIImage(resource: .recipeAppLogo))
         imageView.contentMode = .scaleAspectFit
@@ -27,12 +28,18 @@ class SignOnViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureVC()
-        
+    }
+    
+    @objc func hideKeyboard() {
+        view.endEditing(true) // Klavyeyi gizler
     }
     
     private func configureVC(){
         self.view.backgroundColor = .systemBackground
         self.view.addSubviews(imageView  , nameTextField, mailTextField,passwordTextField,signOnButton , joinUsLabel)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
         
         self.signOnButton.addTarget(self, action: #selector(signOnButtonClicked), for: .touchUpInside)
         self.joinUsLabel.text = "LET'S JOIN US!"
@@ -88,7 +95,7 @@ class SignOnViewController: UIViewController {
         
     }
     
-    func controlTextFields() -> Bool {
+   private func controlTextFields() -> Bool {
         guard let name = nameTextField.text , let mail = mailTextField.text,let password = passwordTextField.text else {
             return false
         }

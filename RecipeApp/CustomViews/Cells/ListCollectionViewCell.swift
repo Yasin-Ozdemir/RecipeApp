@@ -7,7 +7,8 @@
 
 import UIKit
 import SnapKit
-class ListCollectionViewCell: UICollectionViewCell {
+
+final class ListCollectionViewCell: UICollectionViewCell {
     static let cellID = "ListCollectionCell"
     
     private var categoryElement : CategoryElement?
@@ -31,43 +32,11 @@ class ListCollectionViewCell: UICollectionViewCell {
         backgroundColor = .secondarySystemBackground
        
     }
-    func setForCategoryAndArea(listType : ListType? = nil , model : (area : Area? , category : CategoryElement?) ){
-        switch listType {
-        
-        case .categories:
-            if model.category?.strCategory == "Breakfast" {
-                self.imageView.image = UIImage(resource: .breakfast)
-            } else if model.category?.strCategory == "Goat" {
-                self.imageView.image = UIImage(resource: .goat)
-            }else {
-                self.imageView.downloadImage(url: model.category?.strCategoryThumb)
-            }
-            self.titleLabel.text = model.category?.strCategory ?? "Unkown"
-            break
-        
-        
-        case .areas:
-            self.imageView.contentMode = .scaleToFill
-            self.imageView.image = UIImage(named: model.area!.imageName)
-            self.titleLabel.text = model.area?.name ?? "Unkown"
-            break
-        case .none: break
-            
-        }
-        
+    func set(title: String? , imagePath: String?) {
+        self.titleLabel.text = title ?? "Unkown"
+        self.imageView.downloadImage(imagePath: imagePath)
     }
-    func setForSearchResult(recipe : [String: String?]){
-        guard let url = recipe["strMealThumb"] as? String , let title = recipe["strMeal"] as? String else{
-            self.titleLabel.text = "Unkown"
-            self.imageView.downloadImage(url: "")
-            return
-        }
-        
-        self.titleLabel.text = title
-        self.imageView.downloadImage(url: url)
-        
-        
-    }
+    
     private func setupUI(){
         addSubviews(titleLabel , imageView)
         

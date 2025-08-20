@@ -10,13 +10,13 @@ import Foundation
 protocol INetworkManager {
     func download<T: Codable>(url : String , model : T.Type , httpMethod : HTTPMethod) async -> (Result<T , Error>)
 }
-class NetworkManager : INetworkManager{
+final class NetworkManager : INetworkManager{
         
     func download<T: Codable>(url : String , model : T.Type , httpMethod : HTTPMethod) async -> (Result<T , Error>){
        
         
-        let response = await AF.request(url).validate().serializingDecodable(T.self).response
-        
+        let response = await AF.request(url , method: httpMethod).validate().serializingDecodable(T.self).response
+       
         switch response.result {
         case .success(let value) : return .success(value)
         case .failure(let error) : return .failure(error)

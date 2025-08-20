@@ -8,7 +8,8 @@
 import Foundation
 import UIKit
 import SnapKit
-class ProfileTableViewCell : UITableViewCell {
+
+final class ProfileTableViewCell : UITableViewCell {
     private let titleLabel = TitleLabel(align: .left, size: 17)
     
     private var container : UIView = {

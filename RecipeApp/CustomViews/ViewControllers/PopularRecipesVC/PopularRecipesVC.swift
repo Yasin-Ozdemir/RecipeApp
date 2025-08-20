@@ -18,7 +18,7 @@ protocol PopularRecipesPresenterToViewControllerProtocol : AnyObject {
 }
 
 
-class PopularRecipesVC: UIViewController {
+final class PopularRecipesVC: UIViewController {
     private var collectionView : UICollectionView!
     private let titleLabel = TitleLabel(align: .left, size: 25)
     var presenter : PopularRecipesViewControllerToPresenterProtocol!
@@ -64,7 +64,9 @@ extension PopularRecipesVC : PopularRecipesPresenterToViewControllerProtocol {
     
     
     func reloadCollectionView(){
-        self.collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     func showIndicator(){

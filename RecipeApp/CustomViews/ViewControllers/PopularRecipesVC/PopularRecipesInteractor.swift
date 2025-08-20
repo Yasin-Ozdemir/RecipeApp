@@ -11,8 +11,11 @@ protocol PopularRecipesPresenterToInteractorProtocol {
     func fetchRandomRecipe(url : String) async -> (Result<Recipe , Error>)
 }
 
-class PopularRecipesInteractor : PopularRecipesPresenterToInteractorProtocol {
-    private let networkManager = NetworkManager()
+final class PopularRecipesInteractor : PopularRecipesPresenterToInteractorProtocol {
+    private let networkManager : INetworkManager
+    init(networkManager: INetworkManager) {
+        self.networkManager = networkManager
+    }
     
     
     func fetchRandomRecipe(url : String) async -> (Result<Recipe , Error>){

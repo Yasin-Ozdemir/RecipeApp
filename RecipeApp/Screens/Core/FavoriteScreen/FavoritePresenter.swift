@@ -18,7 +18,8 @@ protocol FavoriteViewControllerToPresenterProtocol : AnyObject{
     func viewDidLoad()
     func deleteRecipe(at indexPath : IndexPath)
 }
-class FavoritePresenter : FavoriteViewControllerToPresenterProtocol{
+
+final class FavoritePresenter : FavoriteViewControllerToPresenterProtocol{
     weak var viewControllerDelegate : FavoritePresenterToViewControllerProtocol?
     var router : FavoritePresenterToRouterProtocol!
     var interactor : FavoritePresenterToInteractorProtocol!
@@ -71,7 +72,7 @@ class FavoritePresenter : FavoriteViewControllerToPresenterProtocol{
                 self.recipe?.meals?.remove(at: indexPath.row)
                 self.viewControllerDelegate?.deleteRow(indexPath: indexPath)
                 self.viewControllerDelegate?.reloadTableView()
-            case .failure(let error):
+            case .failure(_):
                 self.viewControllerDelegate?.showAlert(title: "ERROR", message: "Recipe Couldn't Delete")
             }
         }

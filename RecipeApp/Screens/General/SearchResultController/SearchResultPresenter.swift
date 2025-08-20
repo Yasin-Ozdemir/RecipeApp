@@ -16,7 +16,7 @@ protocol SearchViewControllerToPresenterProtocol {
     func getRecipesList() -> [[String : String?]]
     func goRecipeDetailVC(for indexPath : IndexPath)
 }
-class SearchResultPresenter : SearchViewControllerToPresenterProtocol {
+final class SearchResultPresenter : SearchViewControllerToPresenterProtocol {
    
     var interactor : SearchPresenterToInteractorProtocol!
     weak var viewDelegate : SearchPresenterToViewControllerProtocol!

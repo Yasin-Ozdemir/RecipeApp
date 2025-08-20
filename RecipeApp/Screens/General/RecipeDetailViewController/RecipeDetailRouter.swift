@@ -10,22 +10,19 @@ import UIKit
 protocol RecipeDetailPresenterToRouterProtocol {
     var viewDelegate : UIViewController? {get set}
 }
-class RecipeDetailRouter : RecipeDetailPresenterToRouterProtocol {
+final class RecipeDetailRouter : RecipeDetailPresenterToRouterProtocol {
     weak var viewDelegate: UIViewController?
     
-    static func generateModule() -> UIViewController{
-        let viewController = RecipeDetailViewController()
-        let presenter : RecipeDetailViewToPresenterProtocol = RecipeDetailPresenter()
+    static func generateModule(with recipe : [String : String?]) -> UIViewController{
         let interactor : RecipeDetailPresenterToInteractorProtocol = RecipeDetailInteractor()
-        let router : RecipeDetailPresenterToRouterProtocol = RecipeDetailRouter()
+        var router : RecipeDetailPresenterToRouterProtocol = RecipeDetailRouter()
+        var presenter : RecipeDetailViewToPresenterProtocol = RecipeDetailPresenter(interactor: interactor, router: router, recipe: recipe)
         
-        viewController.presenter = presenter
         
-        viewController.presenter.interactor = interactor
-        viewController.presenter.router = router
-        viewController.presenter.viewDelegate = viewController
-        
-        viewController.presenter.router.viewDelegate = viewController
+        let viewController = RecipeDetailViewController(presenter: presenter)
+        presenter.viewDelegate = viewController
+        router.viewDelegate = viewController
+   
         
         return viewController
     }

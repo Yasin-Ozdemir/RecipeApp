@@ -12,7 +12,7 @@ protocol FavoritePresenterToViewControllerProtocol: AnyObject{
     func reloadTableView()
     func deleteRow(indexPath : IndexPath)
 }
-class FavoriteViewController: UIViewController {
+final class FavoriteViewController: UIViewController {
     var presenter : FavoriteViewControllerToPresenterProtocol!
     
     private var tableView : UITableView!
@@ -33,7 +33,7 @@ class FavoriteViewController: UIViewController {
 }
 
 extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
-    func setupTableView(){
+    private func setupTableView(){
         self.tableView = .init(frame: view.bounds)
         view.addSubview(self.tableView)
         self.tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.cellId)

@@ -15,16 +15,12 @@ protocol SubViewsToHomeViewsProtocol : AnyObject{
 protocol HomePresenterToViewControllerProtocol : AnyObject{
     
 }
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     var presenter : HomeViewToPresenterProtocol!
     
-    
     private let popularRecipesContainer = UIView()
-    
     private let categoriesListContainer = UIView()
-    
     private let areasListContainer = UIView()
-    
     private let contentView = UIView()
     
     private var searchController : UISearchController = {
@@ -42,7 +38,6 @@ class HomeViewController: UIViewController {
         return scrollView
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -54,16 +49,15 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupNavigationController()
-        
     }
     
-    func setupSearchBar(){
+    private func setupSearchBar(){
         self.searchController.searchResultsUpdater = self
         self.searchController.isActive = true
     }
     
     
-    func setupNavigationController(){
+    private func setupNavigationController(){
         self.navigationItem.title = "Home"
         self.navigationController?.navigationBar.tintColor = ColorConstants.mainColor
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -71,7 +65,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    func setupUILayouts(){
+    private func setupUILayouts(){
         self.view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -84,6 +78,7 @@ class HomeViewController: UIViewController {
         }
         contentView.backgroundColor = .systemBackground
         self.contentView.addSubviews(popularRecipesContainer , categoriesListContainer, areasListContainer)
+        
         
         popularRecipesContainer.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
@@ -104,8 +99,14 @@ class HomeViewController: UIViewController {
             make.height.equalTo(195)
         }
     }
-    func configureVC(){
-        guard let popularRecipesView =  PopularRecipesRouter.generateModule() as? PopularRecipesVC ,let categoriesList = ListRouter.generateModule(with: .categories) as? ListVC , let areasList = ListRouter.generateModule(with: .areas) as? ListVC  else {
+    
+    
+    private func configureVC(){
+        
+        guard let popularRecipesView =  PopularRecipesRouter.generateModule() as? PopularRecipesVC ,
+              let categoriesList = CategoryRouter.createModule() as? CategoryViewController ,
+                let areasList = AreaRouter.createModule() as? AreaViewController
+        else{
             return
         }
         popularRecipesView.homeViewDelegate = self
@@ -117,8 +118,8 @@ class HomeViewController: UIViewController {
         areasList.homeViewDelegate = self
         add(childVC: areasList, to: areasListContainer)
     }
-    
-    func add(childVC: UIViewController, to containerView: UIView) {
+   
+    private func add(childVC: UIViewController, to containerView: UIView) {
          addChild(childVC)
          containerView.addSubview(childVC.view)
          childVC.view.frame = containerView.bounds // vc to fill up whole view controller
@@ -135,7 +136,7 @@ extension HomeViewController : HomePresenterToViewControllerProtocol {
 
 
 extension HomeViewController : SubViewsToHomeViewsProtocol {
-    func showIndicator(){
+     func showIndicator(){
         showActivityProgressIndicator()
     }
     func dismissIndicator(){
@@ -158,6 +159,5 @@ extension HomeViewController : UISearchResultsUpdating {
         resultController.search(with: recipeName)
       
     }
-    
-    
+
 }

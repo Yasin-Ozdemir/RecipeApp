@@ -13,7 +13,8 @@ protocol HomePresenterToRouterProtocol {
     static func generateModule() -> UIViewController
     func navigateDetailVC(with recipe : Recipe , title : String) 
 }
-class HomeRouter : HomePresenterToRouterProtocol{
+
+final class HomeRouter : HomePresenterToRouterProtocol{
     weak var viewControllerDelegate : UIViewController?
     
     
@@ -30,12 +31,13 @@ class HomeRouter : HomePresenterToRouterProtocol{
         
         return viewController
     }
+    
     func navigateDetailVC(with recipe : Recipe , title : String) {
         DispatchQueue.main.async {
-            guard let vc = DetailRouter.generateModule() as? DetailViewController else{
+            guard let vc = DetailRouter.generateModule() as? DetailViewController, let recipes = recipe.meals else{
                 return
             }
-            vc.presenter.recipes = recipe.meals!
+            vc.presenter.updateRecipes(with: recipes)
             vc.title = title
             self.viewControllerDelegate?.navigationController?.navigate(to: vc)
         }

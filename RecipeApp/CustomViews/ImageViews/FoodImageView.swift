@@ -7,7 +7,7 @@
 
 import UIKit
 import SDWebImage
-class FoodImageView: UIImageView {
+final class FoodImageView: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,9 +24,14 @@ class FoodImageView: UIImageView {
         contentMode = .scaleAspectFit
     }
     
-    func downloadImage(url : String?){
-        guard let urlString = url , let url = URL(string: urlString) else {
+    func downloadImage(imagePath : String?){
+        guard let imagePath = imagePath else {
             self.image = UIImage(resource: .placeholder)
+            return
+        }
+        
+        guard let url = URL(string: imagePath) else {
+            self.image = UIImage(named: imagePath)
             return
         }
         sd_setImage(with: url)

@@ -43,22 +43,23 @@ class PopularRecipesPresenter : PopularRecipesViewControllerToPresenterProtocol{
     func downloadPopularRecipes(){
         viewDelegate?.showIndicator()
         Task {
-            for i in 1...6{
+            for _ in 1...6{
                 let result = await interactor.fetchRandomRecipe(url: NetworkConstants.randomRecipeUrl.rawValue)
                 switch result {
                 case .success(let recipe):
                     DispatchQueue.main.async {
                         self.recipeList.append(recipe)
-                        self.viewDelegate?.reloadCollectionView()
-                        self.viewDelegate?.dismissIndicator()
+                        
                     }
-                case .failure(let error):
+                case .failure(_):
                     DispatchQueue.main.async {
                         self.viewDelegate?.dismissIndicator()
                         self.viewDelegate?.showError()
                     }
                 }
             }
+            self.viewDelegate?.reloadCollectionView()
+            self.viewDelegate?.dismissIndicator()
         }
         
     }

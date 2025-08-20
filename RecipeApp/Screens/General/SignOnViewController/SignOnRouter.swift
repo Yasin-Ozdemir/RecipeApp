@@ -11,7 +11,7 @@ protocol SignOnPresenterToRouterProtocol {
     var viewDelegate : UIViewController? {get set}
     func navigateBack()
 }
-class SignOnRouter : SignOnPresenterToRouterProtocol {
+final class SignOnRouter : SignOnPresenterToRouterProtocol {
     weak var viewDelegate: UIViewController?
     
     static func generateModule() -> UIViewController{

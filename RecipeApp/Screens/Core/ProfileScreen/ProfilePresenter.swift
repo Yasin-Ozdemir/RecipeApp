@@ -16,7 +16,8 @@ protocol ProfileViewControllerToPresenterProtocol : AnyObject{
      func getProfileItem(for indexPath : IndexPath) -> ProfileItem
     func exit()
 }
-class ProfilePresenter : ProfileViewControllerToPresenterProtocol{
+
+final class ProfilePresenter : ProfileViewControllerToPresenterProtocol{
     weak var viewControllerDelegate : ProfilePresenterToViewControllerProtocol?
     var interactor : ProfilePresenterToInteractorProtocol!
     var router : ProfilePresenterToRouterProtocol!

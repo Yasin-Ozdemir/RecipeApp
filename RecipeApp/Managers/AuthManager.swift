@@ -7,18 +7,21 @@
 
 import Foundation
 import FirebaseAuth
+
 enum AuthError : Error{
     case signOutError
     case signOnError
     case signInError
 }
+
 protocol IAuthManager {
     func signIn(mail : String , password : String , completion : @escaping (Result<String , Error>) -> Void)
     func signOn(mail : String , password : String ,name : String, completion : @escaping (Result<User , Error>) -> Void)
     func signOut(completion : @escaping (Result<Void , Error>) -> Void)
 }
-class AuthManager : IAuthManager{
-    let auth = Auth.auth()
+
+final class AuthManager : IAuthManager{
+   private let auth = Auth.auth()
     func signIn(mail : String , password : String , completion : @escaping (Result<String , Error>) -> Void){
         auth.signIn(withEmail: mail, password: password) { authResult, error in
             if let error = error {

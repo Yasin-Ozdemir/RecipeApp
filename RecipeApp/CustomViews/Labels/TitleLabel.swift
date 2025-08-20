@@ -7,9 +7,8 @@
 
 import UIKit
 
-class TitleLabel: UILabel {
+final class TitleLabel: UILabel {
 
-   
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()

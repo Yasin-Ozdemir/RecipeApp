@@ -13,7 +13,7 @@ protocol FavoritePresenterToRouterProtocol : AnyObject{
     static func generateModule() -> UIViewController
     func navigateRecipeDetailVC(recipe : [String : String?])
 }
-class FavoriteRouter : FavoritePresenterToRouterProtocol{
+final class FavoriteRouter : FavoritePresenterToRouterProtocol{
     weak var viewControllerDelegate : UIViewController?
     
     static func generateModule() -> UIViewController{
@@ -34,10 +34,10 @@ class FavoriteRouter : FavoritePresenterToRouterProtocol{
     }
     
     func navigateRecipeDetailVC(recipe : [String : String?]){
-        guard let vc = RecipeDetailRouter.generateModule() as? RecipeDetailViewController else{
+        guard let vc = RecipeDetailRouter.generateModule(with: recipe) as? RecipeDetailViewController else{
             return
         }
-        vc.presenter.recipe = recipe
+ 
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         self.viewControllerDelegate?.present(nav, animated: true)

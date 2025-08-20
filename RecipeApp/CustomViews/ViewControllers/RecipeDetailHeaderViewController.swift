@@ -7,17 +7,15 @@
 
 import UIKit
 import SnapKit
-class RecipeDetailHeaderViewController: UIViewController {
-    let recipeImageView = FoodImageView(frame: .zero)
-    let nameLabel = TitleLabel(align: .center, size: 19)
-    let categoryLabel = TitleLabel(align: .center, size: 17)
-    let areaLabel = TitleLabel(align: .center, size: 17)
+final class RecipeDetailHeaderViewController: UIViewController {
+    private let recipeImageView = FoodImageView(frame: .zero)
+    private let nameLabel = TitleLabel(align: .center, size: 19)
+    private let categoryLabel = TitleLabel(align: .center, size: 17)
+    private let areaLabel = TitleLabel(align: .center, size: 17)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
         setupVC()
         setupUILayouts()
     }
@@ -70,13 +68,13 @@ class RecipeDetailHeaderViewController: UIViewController {
     }
     private func set(recipe : [String: String?]){
         guard let url = recipe["strMealThumb"] as? String, let name = recipe["strMeal"] as? String, let area = recipe["strArea"] as? String, let category = recipe["strCategory"] as? String else {
-            self.recipeImageView.downloadImage(url: "" )
+            self.recipeImageView.downloadImage(imagePath: "" )
             self.nameLabel.text = "Unkown"
             self.areaLabel.text = "Unkown"
             self.categoryLabel.text = "Unkown"
             return
         }
-        self.recipeImageView.downloadImage(url: url )
+        self.recipeImageView.downloadImage(imagePath: url )
         self.nameLabel.text = name
         self.areaLabel.text = "Area:  " + area
         self.categoryLabel.text = "Category:  " + category

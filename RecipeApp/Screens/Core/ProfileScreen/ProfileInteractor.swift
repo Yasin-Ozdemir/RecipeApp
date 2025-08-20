@@ -9,8 +9,10 @@ import Foundation
 protocol ProfilePresenterToInteractorProtocol : AnyObject{
     func signOut(completion : @escaping (Result<Void , Error>) -> Void)
 }
-class ProfileInteractor : ProfilePresenterToInteractorProtocol {
-    let authManager : IAuthManager = AuthManager()
+
+final class ProfileInteractor : ProfilePresenterToInteractorProtocol {
+    private let authManager : IAuthManager = AuthManager()
+    
     func signOut(completion : @escaping (Result<Void , Error>) -> Void){
         authManager.signOut { result in
             completion(result)

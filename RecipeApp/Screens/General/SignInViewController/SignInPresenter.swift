@@ -14,7 +14,7 @@ protocol SignInViewToPresenterProtocol {
     func signIn(mail : String , password : String )
     func goSignOnVC()
 }
-class SignInPresenter : SignInViewToPresenterProtocol {
+final class SignInPresenter : SignInViewToPresenterProtocol {
     weak var viewDelegate: SignInPresenterToViewProtocol?
     var interactor:  SignInPresenterToInteractorProtocol!
     var router: SignInPresenterToRouterProtocol!

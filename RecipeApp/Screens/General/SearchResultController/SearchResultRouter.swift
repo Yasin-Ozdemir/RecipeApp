@@ -12,7 +12,7 @@ protocol SearchPresenterToRouterProtocol {
     
     func navigateRecipeDetailVC(recipe : [String : String?])
 }
-class SearchResultRouter :SearchPresenterToRouterProtocol {
+final class SearchResultRouter :SearchPresenterToRouterProtocol {
     weak var viewDelegate : UIViewController?
     
     static func generateModule() -> UIViewController{
@@ -34,10 +34,10 @@ class SearchResultRouter :SearchPresenterToRouterProtocol {
     
     func navigateRecipeDetailVC(recipe : [String : String?]){
         DispatchQueue.main.async {
-            guard let detailVC = RecipeDetailRouter.generateModule() as? RecipeDetailViewController else {
+            guard let detailVC = RecipeDetailRouter.generateModule(with: recipe) as? RecipeDetailViewController else {
                 return
             }
-            detailVC.presenter.recipe = recipe
+           
             detailVC.modalPresentationStyle = .overFullScreen
             let nav = UINavigationController(rootViewController: detailVC)
             nav.modalPresentationStyle = .fullScreen
